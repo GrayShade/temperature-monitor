@@ -1,0 +1,3 @@
+[submodule "libraries/LibHumidity"]
+	path = libraries/LibHumidity
+	url = https://github.com/GrayShade/LibHumidity.git
