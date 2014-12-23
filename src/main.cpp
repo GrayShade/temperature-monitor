@@ -1,6 +1,4 @@
-#include "WProgram.h"
-
-//#include <Wire.h>
+#include <WProgram.h>
 #include <LibHumidity.h>
 
 extern "C" int __attribute__ ((noinline)) main(void)
