@@ -1,12 +1,16 @@
 /home/grayshade/temperature-monitor/build/libraries/i2c_t3/i2c_t3.o: \
- libraries/i2c_t3/i2c_t3.cpp teensy3/mk20dx128.h teensy3/core_pins.h \
- teensy3/mk20dx128.h teensy3/pins_arduino.h libraries/i2c_t3/i2c_t3.h \
- teensy3/Arduino.h teensy3/WProgram.h teensy3/avr/pgmspace.h \
- teensy3/avr/interrupt.h teensy3/avr_functions.h teensy3/wiring.h \
- teensy3/binary.h teensy3/core_id.h teensy3/core_pins.h \
- teensy3/HardwareSerial.h teensy3/Stream.h teensy3/Print.h \
- teensy3/WString.h teensy3/Printable.h teensy3/new.h \
- teensy3/avr_emulation.h teensy3/usb_serial.h teensy3/usb_seremu.h \
- teensy3/usb_keyboard.h teensy3/keylayouts.h teensy3/usb_mouse.h \
- teensy3/usb_joystick.h teensy3/usb_midi.h teensy3/usb_rawhid.h \
- teensy3/usb_flightsim.h teensy3/elapsedMillis.h teensy3/IntervalTimer.h
+ libraries/i2c_t3/i2c_t3.cpp cores/teensy3/mk20dx128.h \
+ cores/teensy3/kinetis.h cores/teensy3/core_pins.h \
+ cores/teensy3/pins_arduino.h libraries/i2c_t3/i2c_t3.h \
+ cores/teensy3/Arduino.h cores/teensy3/WProgram.h \
+ cores/teensy3/avr/pgmspace.h cores/teensy3/avr/interrupt.h \
+ cores/teensy3/avr_functions.h cores/teensy3/wiring.h \
+ cores/teensy3/binary.h cores/teensy3/core_id.h cores/teensy3/core_pins.h \
+ cores/teensy3/HardwareSerial.h cores/teensy3/avr_emulation.h \
+ cores/teensy3/usb_serial.h cores/teensy3/Stream.h cores/teensy3/Print.h \
+ cores/teensy3/WString.h cores/teensy3/Printable.h cores/teensy3/new.h \
+ cores/teensy3/usb_seremu.h cores/teensy3/usb_keyboard.h \
+ cores/teensy3/keylayouts.h cores/teensy3/usb_mouse.h \
+ cores/teensy3/usb_joystick.h cores/teensy3/usb_midi.h \
+ cores/teensy3/usb_rawhid.h cores/teensy3/usb_flightsim.h \
+ cores/teensy3/elapsedMillis.h cores/teensy3/IntervalTimer.h

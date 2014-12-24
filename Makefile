@@ -36,20 +36,20 @@ else
 endif
 
 # path location for Teensy 3 core
-COREPATH = teensy3
+COREPATH = cores/teensy3
 
 # path location for Arduino libraries
 LIBRARYPATH = libraries
 
 # path location for the arm-none-eabi compiler
-COMPILERPATH = $(TOOLSPATH)/arm-none-eabi/bin
+COMPILERPATH = /usr/bin
 
 #************************************************************************
 # Settings below this point usually do not need to be edited
 #************************************************************************
 
 # CPPFLAGS = compiler options for C and C++
-CPPFLAGS = -Wall -Os -flto -ffunction-sections -fdata-sections -mcpu=cortex-m4 -mthumb -nostdlib -MMD $(OPTIONS) -DF_CPU=$(TEENSY_CORE_SPEED) -Isrc -I$(COREPATH) -DLIBHUMIDITY_USE_I2C_T3
+CPPFLAGS = -Wall -Os -flto -ffunction-sections -fdata-sections -mcpu=cortex-m4 -mthumb -nostdlib -MMD $(OPTIONS) -DF_CPU=$(TEENSY_CORE_SPEED) -Isrc -I$(COREPATH) -DTEENSY3_NO_HWSERIAL -DTEENSY3_NO_INTERVAL_TIMER -DTEENSY3_NO_TONE -DTEENSY3_NO_AUDIOSTREAM -DLIBHUMIDITY_USE_I2C_T3
 
 # compiler options for C++ only
 CXXFLAGS = -std=gnu++0x -felide-constructors -fno-exceptions -fno-rtti
@@ -76,11 +76,11 @@ ifdef ARDUINO
 endif
 
 # linker options
-LDFLAGS = -Os -fno-lto -Wl,--gc-sections -mcpu=cortex-m4 -mthumb -T$(LDSCRIPT)
+LDFLAGS = -Os -flto --specs=nano.specs -Wl,--gc-sections -mcpu=cortex-m4 -mthumb -T$(LDSCRIPT)
 
 # source files to ignore (to reduce size)
-IGNORE_C_FILES := teensy3/serial1.c teensy3/serial2.c teensy3/serial3.c
-IGNORE_CPP_FILES := teensy3/AudioStream.cpp teensy3/Tone.cpp teensy3/IntervalTimer.cpp teensy3/HardwareSerial1.cpp teensy3/HardwareSerial2.cpp teensy3/HardwareSerial3.cpp libraries/rbuf/rbuf.cpp
+IGNORE_C_FILES :=
+IGNORE_CPP_FILES := $(COREPATH)/main.cpp
 
 # additional libraries to link
 LIBS = -lm

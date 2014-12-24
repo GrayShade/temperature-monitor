@@ -1,4 +1,5 @@
-/home/grayshade/temperature-monitor/build/src/main.o: src/main.cpp \
+/home/grayshade/temperature-monitor/build/cores/teensy3/Stream.o: \
+ cores/teensy3/Stream.cpp cores/teensy3/Arduino.h \
  cores/teensy3/WProgram.h cores/teensy3/avr/pgmspace.h \
  cores/teensy3/avr/interrupt.h cores/teensy3/avr_functions.h \
  cores/teensy3/wiring.h cores/teensy3/binary.h cores/teensy3/core_id.h \
@@ -11,5 +12,4 @@
  cores/teensy3/usb_mouse.h cores/teensy3/usb_joystick.h \
  cores/teensy3/usb_midi.h cores/teensy3/usb_rawhid.h \
  cores/teensy3/usb_flightsim.h cores/teensy3/elapsedMillis.h \
- cores/teensy3/WProgram.h cores/teensy3/IntervalTimer.h \
- libraries/LibHumidity/LibHumidity.h
+ cores/teensy3/IntervalTimer.h

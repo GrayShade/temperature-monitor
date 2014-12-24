@@ -1,3 +1,6 @@
 [submodule "libraries/LibHumidity"]
 	path = libraries/LibHumidity
 	url = https://github.com/GrayShade/LibHumidity.git
+[submodule "cores"]
+	path = cores
+	url = https://github.com/GrayShade/cores.git
