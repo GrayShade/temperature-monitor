@@ -91,15 +91,21 @@
 // I2C_BUS_ENABLE 1   (enable I2C0 only)
 // I2C_BUS_ENABLE 2   (enable I2C0 & I2C1)
 //
+#ifndef I2C_BUS_ENABLE
 #define I2C_BUS_ENABLE 2
+#endif
 
 // ------------------------------------------------------------------------------------------------------
 // Tx/Rx buffer sizes - modify these as needed.  Buffers should be large enough to hold:
 //                      Target Addr + Target Command (varies with protocol) + Data payload
 //                      Default is: 1byte Addr + 2byte Command + 256byte Data
 //
+#ifndef I2C_TX_BUFFER_LENGTH
 #define I2C_TX_BUFFER_LENGTH 259
+#endif
+#ifndef I2C_RX_BUFFER_LENGTH
 #define I2C_RX_BUFFER_LENGTH 259
+#endif
 
 // ------------------------------------------------------------------------------------------------------
 // Interrupt flag - uncomment and set below to make the specified pin high whenever the
