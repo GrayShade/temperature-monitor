@@ -12,4 +12,5 @@
  cores/teensy3/usb_midi.h cores/teensy3/usb_rawhid.h \
  cores/teensy3/usb_flightsim.h cores/teensy3/elapsedMillis.h \
  cores/teensy3/WProgram.h cores/teensy3/IntervalTimer.h \
- libraries/LibHumidity/LibHumidity.h
+ libraries/LibHumidity/LibHumidity.h libraries/i2c_t3/i2c_t3.h \
+ cores/teensy3/Arduino.h
