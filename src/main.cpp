@@ -17,10 +17,13 @@ extern "C" int __attribute__ ((noinline)) main(void)
 
     while (true)
     {
+        float hum = humidity.GetHumidity();
+        float temp = humidity.GetTemperatureC();
+
         Serial.print("RH: ");
-        Serial.print(humidity.GetHumidity());
+        Serial.print(hum);
         Serial.print(" Temp: ");
-        Serial.println(humidity.GetTemperatureC());
+        Serial.println(temp);
         delay(2000);
     }
 }
