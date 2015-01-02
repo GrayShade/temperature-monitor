@@ -13,18 +13,34 @@ extern "C" int __attribute__ ((noinline)) main(void)
 
     Serial.begin(9600);
     humidity.ResetSensor();
-    delay(5000);
 
     while (true)
     {
-        float hum = humidity.GetHumidity();
-        float temp = humidity.GetTemperatureC();
+        if (Serial.available() > 0)
+        {
+            int cmd = Serial.read();
 
-        Serial.print("RH: ");
-        Serial.print(hum);
-        Serial.print(" Temp: ");
-        Serial.println(temp);
-        delay(2000);
+            switch (cmd)
+            {
+                case 'M':
+                {
+                    float hum = humidity.GetHumidity();
+                    float temp = humidity.GetTemperatureC();
+
+                    Serial.print(hum);
+                    Serial.print(' ');
+                    Serial.println(temp);
+                    break;
+                }
+                default:
+                {
+                    Serial.println("Unknown command");
+                    break;
+                }
+            }
+        }
+
+        yield();
     }
 }
 
