@@ -4,12 +4,12 @@
 
 extern "C" int __attribute__ ((noinline)) main(void)
 {
-    pinMode(15, OUTPUT);
-    digitalWriteFast(15, LOW);
-    pinMode(14, OUTPUT);
-    digitalWriteFast(14, HIGH);
+    pinMode(20, OUTPUT);
+    digitalWriteFast(20, LOW);
+    pinMode(21, OUTPUT);
+    digitalWriteFast(21, HIGH);
 
-    LibHumidity humidity(eSensorHTU21, I2C_PINS_16_17, I2C_RATE_400);
+    LibHumidity humidity(eSensorHTU21, I2C_PINS_18_19, I2C_RATE_400);
 
     Serial.begin(9600);
     humidity.ResetSensor();
