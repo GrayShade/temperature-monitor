@@ -42,7 +42,7 @@ extern "C" int __attribute__ ((noinline)) main(void)
         }
 
         yield();
-	Snooze.idle();
+	    Snooze.idle();
     }
 }
 
