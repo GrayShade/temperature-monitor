@@ -100,8 +100,11 @@ C_FILES := $(wildcard src/*.c)
 CPP_FILES := $(wildcard src/*.cpp)
 INO_FILES := $(wildcard src/*.ino)
 
+LC_FILES += $(wildcard $(LIBRARYPATH)/Snooze/utility/*.c)
+
 # include paths for libraries
 L_INC := $(foreach lib,$(filter %/, $(wildcard $(LIBRARYPATH)/*/)), -I$(lib))
+#L_INC := $(L_INC) $(foreach lib,$(filter %/, $(wildcard $(LIBRARYPATH)/*/)), -I$(utility))
 
 SOURCES := $(C_FILES:.c=.o) $(CPP_FILES:.cpp=.o) $(INO_FILES:.ino=.o) $(TC_FILES:.c=.o) $(TCPP_FILES:.cpp=.o) $(LC_FILES:.c=.o) $(LCPP_FILES:.cpp=.o)
 SOURCES := $(filter-out $(IGNORE_C_FILES:.c=.o),$(SOURCES))

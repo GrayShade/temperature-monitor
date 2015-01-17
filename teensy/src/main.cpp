@@ -1,6 +1,7 @@
 #include <WProgram.h>
 #include <LibHumidity.h>
 #include <i2c_t3.h>
+#include <Snooze.h>
 
 extern "C" int __attribute__ ((noinline)) main(void)
 {
@@ -41,6 +42,7 @@ extern "C" int __attribute__ ((noinline)) main(void)
         }
 
         yield();
+	Snooze.idle();
     }
 }
 
