@@ -10,9 +10,6 @@
 [submodule "teensy/libraries/ILI9341_t3"]
 	path = teensy/libraries/ILI9341_t3
 	url = https://github.com/PaulStoffregen/ILI9341_t3.git
-[submodule "teensy/SPI"]
-	path = teensy/SPI
-	url = https://github.com/PaulStoffregen/SPI.git
 [submodule "teensy/libraries/SPI"]
 	path = teensy/libraries/SPI
 	url = https://github.com/PaulStoffregen/SPI.git
