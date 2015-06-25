@@ -5,7 +5,7 @@ TARGET = $(notdir $(CURDIR))
 TEENSY = 31
 
 # Set to 24000000, 48000000, or 96000000 to set CPU core speed
-TEENSY_CORE_SPEED = 48000000
+TEENSY_CORE_SPEED = 144000000
 
 # Some libraries will require this to be defined
 # If you define this, you will break the default main.cpp
@@ -49,7 +49,7 @@ COMPILERPATH = /usr/bin
 #************************************************************************
 
 # CPPFLAGS = compiler options for C and C++
-CPPFLAGS = -Wall -Os -flto -ffunction-sections -fdata-sections -mcpu=cortex-m4 -mthumb -nostdlib -MMD $(OPTIONS) -DF_CPU=$(TEENSY_CORE_SPEED) -Isrc -I$(COREPATH) -DTEENSY3_NO_HWSERIAL -DTEENSY3_NO_INTERVAL_TIMER -DTEENSY3_NO_TONE -DTEENSY3_NO_AUDIOSTREAM -DLIBHUMIDITY_USE_I2C_T3 -DI2C_BUS_ENABLE=1 -DI2C_TX_BUFFER_LENGTH=2 -DI2C_RX_BUFFER_LENGTH=4 -DTEENSYDUINO
+CPPFLAGS = -Wall -Os -ffunction-sections -fdata-sections -mcpu=cortex-m4 -mthumb -nostdlib -MMD $(OPTIONS) -DF_CPU=$(TEENSY_CORE_SPEED) -Isrc -I$(COREPATH) -DTEENSY3_NO_HWSERIAL -DTEENSY3_NO_INTERVAL_TIMER -DTEENSY3_NO_TONE -DTEENSY3_NO_AUDIOSTREAM -DLIBHUMIDITY_USE_I2C_T3 -DI2C_BUS_ENABLE=1 -DI2C_TX_BUFFER_LENGTH=2 -DI2C_RX_BUFFER_LENGTH=4 -DTEENSYDUINO
 
 # compiler options for C++ only
 CXXFLAGS = -std=gnu++0x -felide-constructors -fno-exceptions -fno-rtti

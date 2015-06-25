@@ -1,6 +1,6 @@
 [submodule "teensy/cores"]
 	path = teensy/cores
-	url = https://github.com/GrayShade/cores.git
+	url = https://github.com/PaulStoffregen/cores.git
 [submodule "teensy/libraries/LibHumidity"]
 	path = teensy/libraries/LibHumidity
 	url = https://github.com/GrayShade/LibHumidity.git
