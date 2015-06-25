@@ -6,4 +6,4 @@
 	url = https://github.com/GrayShade/LibHumidity.git
 [submodule "teensy/libraries/Snooze"]
 	path = teensy/libraries/Snooze
-	url = https://github.com/duff2013/Snooze
+	url = https://github.com/GrayShade/Snooze.git
