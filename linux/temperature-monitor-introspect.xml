@@ -1,0 +1,10 @@
+<?xml version="1.0" ?>
+<node name="/ro.dend/TemperatureMonitor">
+  <interface name="ro.dend.TemperatureMonitor">
+    <method name="ReadTemperature">
+        <arg type="d" name="temperature" direction="out" />
+        <arg type="d" name="humidity" direction="out" />
+    </method>    
+  </interface>
+</node>
+

@@ -1,66 +1,53 @@
 #include <sys/types.h>
 #include <sys/stat.h>
-#include <fcntl.h>
+
+#include "temperature-monitor-server.h"
+#include "paths.h"
+
 #include <unistd.h>
+#include <stdlib.h>
+#include <signal.h>
 #include <stdio.h>
-#include <errno.h>
-#include <termios.h>
+#include <limits.h>
+
+EchoServer::EchoServer(DBus::Connection &connection, sensor &s)
+    : DBus::ObjectAdaptor(connection, ECHO_SERVER_PATH), s(s)
+{
+}
+
+void EchoServer::ReadTemperature(double &temperature, double &humidity)
+{
+    float temp;
+    float hum;
+
+    s.take_reading(temp, hum);
+
+    temperature = temp;
+    humidity = hum;
+}
+
+DBus::BusDispatcher dispatcher;
+
+void niam(int sig)
+{
+    dispatcher.leave();
+}
+
+static const char device[] = "/dev/ttyACM0";
 
 int main()
 {
-    int fd = open("/dev/ttyACM0", O_RDWR | O_NOCTTY | O_NDELAY);
-    if (fd < 0) {
-        perror("open");
-        return errno;
-    }
+    signal(SIGTERM, niam);
+    signal(SIGINT, niam);
 
-    if (fcntl(fd, F_SETFL, 0) < 0) {
-        perror("fcntl");
-    }
+    DBus::default_dispatcher = &dispatcher;
 
-    termios options;
-    tcgetattr(fd, &options);
-    cfsetspeed(&options, B460800);
-    cfmakeraw(&options);
+    DBus::Connection conn = DBus::Connection::SystemBus();
+    conn.request_name(ECHO_SERVER_NAME);
 
-    options.c_lflag &= ~NOFLSH;
+    sensor s(device);
+    EchoServer server(conn, s);
 
-    options.c_cflag &= ~CRTSCTS;
-    options.c_cflag |= CLOCAL | CREAD;
-
-    options.c_iflag &= ~IMAXBEL;
-    options.c_iflag |= IGNBRK;
-
-    options.c_oflag &= ~ONLCR;
-
-    tcsetattr(fd, TCSANOW, &options);
-
-    tcflush(fd, TCIOFLUSH);
-
-    while (true) {
-        char buf[256];
-        buf[0] = 'M';
-        ssize_t len = write(fd, buf, 1);
-        if (len < 0) {
-            perror("write");
-            return errno;
-        }
-
-        len = read(fd, buf, sizeof(buf));
-        if (len < 0) {
-            perror("read");
-            return errno;
-        }
-
-        ssize_t ret = write(1, buf, len);
-        if (ret < 0) {
-            perror("write");
-            return errno;
-        }
-
-        sleep(2);
-    }
-
-    close(fd);
+    dispatcher.enter();
 }
 
