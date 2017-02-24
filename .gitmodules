@@ -1,6 +1,12 @@
 [submodule "teensy/libraries/LibHumidity"]
 	path = teensy/libraries/LibHumidity
 	url = https://github.com/GrayShade/LibHumidity.git
+[submodule "teensy/cores"]
+	path = teensy/cores
+	url = https://github.com/PaulStoffregen/cores.git
 [submodule "teensy/libraries/Snooze"]
 	path = teensy/libraries/Snooze
-	url = https://github.com/GrayShade/Snooze.git
+	url = https://github.com/duff2013/Snooze.git
+[submodule "teensy/libraries/i2c_t3"]
+	path = teensy/libraries/i2c_t3
+	url = https://github.com/nox771/i2c_t3.git

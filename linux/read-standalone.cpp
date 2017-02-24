@@ -58,7 +58,7 @@ int main()
             return errno;
         }
 
-        sleep(2);
+        sleep(60);
     }
 
     close(fd);

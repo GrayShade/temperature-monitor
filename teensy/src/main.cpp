@@ -9,10 +9,15 @@ extern "C" int __attribute__ ((noinline)) main(void)
     pinMode(21, OUTPUT);
     digitalWriteFast(21, HIGH);
 
+    delay(15);
     LibHumidity humidity(eSensorHTU21, I2C_PINS_18_19, I2C_RATE_400);
 
     Serial.begin(9600);
     humidity.ResetSensor();
+
+    /* SnoozeDigital digital; */
+    /* SnoozeUSBSerial usbSerial; */
+    /* SnoozeBlock config(digital, usbSerial); */
 
     while (true)
     {
@@ -41,6 +46,6 @@ extern "C" int __attribute__ ((noinline)) main(void)
         }
 
         yield();
-        Snooze.idle();
+        /* Snooze.idle(config); */
     }
 }

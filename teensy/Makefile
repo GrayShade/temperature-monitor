@@ -49,7 +49,7 @@ COMPILERPATH = /usr/bin
 #************************************************************************
 
 # CPPFLAGS = compiler options for C and C++
-CPPFLAGS = -Wall -Os -ffunction-sections -fdata-sections -mcpu=cortex-m4 -mthumb -nostdlib -MMD $(OPTIONS) -DF_CPU=$(TEENSY_CORE_SPEED) -Isrc -I$(COREPATH) -DTEENSY3_NO_HWSERIAL -DTEENSY3_NO_INTERVAL_TIMER -DTEENSY3_NO_TONE -DTEENSY3_NO_AUDIOSTREAM -DLIBHUMIDITY_USE_I2C_T3 -DI2C_BUS_ENABLE=1 -DI2C_TX_BUFFER_LENGTH=2 -DI2C_RX_BUFFER_LENGTH=4 -DTEENSYDUINO
+CPPFLAGS = -Wall -Os -ffunction-sections -fdata-sections -mcpu=cortex-m4 -mthumb -nostdlib -MMD $(OPTIONS) -DF_CPU=$(TEENSY_CORE_SPEED) -Isrc -I$(COREPATH) -DTEENSY3_NO_HWSERIAL -DTEENSY3_NO_INTERVAL_TIMER -DTEENSY3_NO_TONE -DTEENSY3_NO_AUDIOSTREAM -DLIBHUMIDITY_USE_I2C_T3 -DTEENSYDUINO
 
 # compiler options for C++ only
 CXXFLAGS = -std=gnu++0x -felide-constructors -fno-exceptions -fno-rtti
@@ -92,15 +92,13 @@ OBJCOPY = $(abspath $(COMPILERPATH))/arm-none-eabi-objcopy
 SIZE = $(abspath $(COMPILERPATH))/arm-none-eabi-size
 
 # automatically create lists of the sources and objects
-LC_FILES := $(wildcard $(LIBRARYPATH)/*/*.c)
-LCPP_FILES := $(wildcard $(LIBRARYPATH)/*/*.cpp)
+LC_FILES := $(wildcard $(LIBRARYPATH)/*/*.c) $(wildcard $(LIBRARYPATH)/*/utility/*.c)
+LCPP_FILES := $(wildcard $(LIBRARYPATH)/*/*.cpp) $(wildcard $(LIBRARYPATH)/*/utility/*.cpp)
 TC_FILES := $(wildcard $(COREPATH)/*.c)
 TCPP_FILES := $(wildcard $(COREPATH)/*.cpp)
 C_FILES := $(wildcard src/*.c)
 CPP_FILES := $(wildcard src/*.cpp)
 INO_FILES := $(wildcard src/*.ino)
-
-LC_FILES += $(wildcard $(LIBRARYPATH)/Snooze/utility/*.c)
 
 # include paths for libraries
 L_INC := $(foreach lib,$(filter %/, $(wildcard $(LIBRARYPATH)/*/)), -I$(lib))
@@ -143,7 +141,7 @@ $(BUILDDIR)/%.o: %.ino
 
 $(TARGET).elf: $(OBJS) $(LDSCRIPT)
 	@echo "[LD]\t$@"
-	@$(CC) $(LDFLAGS) -o "$@" $(OBJS) $(LIBS)
+	$(CC) $(LDFLAGS) -o "$@" $(OBJS) $(LIBS)
 
 %.hex: %.elf
 	@echo "[HEX]\t$@"
